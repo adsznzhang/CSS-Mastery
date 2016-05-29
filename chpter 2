@@ -1,0 +1,41 @@
+p {}
+blockquote p {} /*两个选择器之间的空格构成 后代选择器*/
+#idname {}/*具体到某一个元素时， ID选择器非常好用*/
+.classnmae {}/*选择一类元素时，定好类名用“点”来进行选择*/
+
+2.1 伪类：
+
+需要根据文档结构之外的其他条件对元素应用样式。/*use CSS depending on other conditions other than dom*/
+/*makes all unvisited links blue */
+a:link {color:blue;}
+/*makes all visited links green */
+a:visited {color:green;}
+a:,hover, a:focus, a:active {}
+
+2.2 通用选择器
+* {} /*i like star 嘿嘿，用多了会混乱哦，注意使用*/
+
+2.3 高级选择器
+  2.3.1
+    child slector and adjacent sibling selector
+    child selector 会选择元素的直接后代：
+    #nav>li {
+      background: url(1.png) no-repeat left top;
+      padding-left: 20px;
+      }
+    <ul id="nav">
+      <li><a href="/home/">Home</a></li>
+        <ul>
+          <li><a href="/design/">Design</a></li>
+        </ul>
+    </ul>
+    
+    adjacent sibling selector: /*会选择一个元素和另一个相邻元素*/
+    
+    h2 + p {}
+  
+  2.3.2 attribute selector 
+    
+    
+
+
