@@ -35,7 +35,27 @@ a:,hover, a:focus, a:active {}
     h2 + p {}
   
   2.3.2 attribute selector 
-    
-    
-
+    acronym[title] {
+      border-bottom: 1px dotted #999;
+      } 
+    acronym[title]:hover, acronym[title]:focus {
+      cursor: help;
+      }
+  
+  
+  2.3.3 cascade and speciality
+    priority:
+      1 标有 ！important 的用户样式
+      2 标有 ！important 的作者样式
+      3 作者样式
+      4 用户样式
+      5 浏览器/用户代理应用的样式
+    then depending on the speciality of selector 
+      选择器的特殊性分为4个等级：a, b, c, d
+        1 如果样式是行内样式， 那么a=1.
+        2 b等于ID选择器的总数。
+        3 c等于类， 伪类和属性选择器的数量。
+        4 d等于类型选择器和伪元素选择器的数量。
+        
+        
 
