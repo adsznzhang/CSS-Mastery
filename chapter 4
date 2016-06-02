@@ -1,0 +1,56 @@
+4.1 背景图像基础
+  最简单的走起：
+    body {
+    background-imge: url(/img/pattern.gif);
+    }
+  可以选择垂直平铺，水平平铺，和根本不平铺。
+  渐变的实现是创建一个很高很窄的渐变图像，然后将这个图像应用于页面的主体并让它水平平铺，（这个时候要多思考这些巧妙地运用！因为我们早就
+  知道如何布置背景，要多思考！）
+    body {
+    backgroud-imge: url(/img/gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #ccc; /*因为内容超过图像高度，渐变色会突然消失，所以很尴尬，就要给它补上一个整体的背景色咯*/
+    }
+  平铺一些页面上的时候（图像可能纯表现性的），可能希望将图像从其余内容中分离出来。实现的方法是在html中为这个图像创建一个“钩子”例如：
+    #branding {
+      width: 700px;
+      height: 200px;
+      background-image: url(/img/branding/.gif);
+      background-repeat: no-repeat;
+      }
+    假设要在站点每个标题上添加一个项目符合如下：
+      h1 {
+        padding-left: 30px;
+        background-image: url(/img/bullet.gif);
+        background-repeat: no-repeat;
+        background-position: left center;
+        }
+      简写的版本 ：
+      h1 {
+        background: #ccc url(/img/bullet.gif) no-repeat left center;
+        }
+        
+  4.2 圆角框
+    4.2.1 固定宽度的圆角框
+      只需要两个图像一个用于框的顶部，一个用于底部。
+        框的标记如下：
+          <div class="box">
+            <h2>Headline</h2>
+              <p>Content</p>
+          </div>
+      样式如下：
+      .box {
+        width: 418px;
+        background: #effce7 url(/img/bottom.gif) no-repeat left bottom;
+        padding-bottom: 1px;
+      }
+      
+      .box h2 {
+        background: url(/img/top.gif) no-repeat left top;
+        margin-top: 0;
+        padding: 20px 20px 0 20px; /*不希望内容碰到框的边界所以添加内边距 */
+        }
+      
+      .box p {
+        padding: 0 20px;
+        }
