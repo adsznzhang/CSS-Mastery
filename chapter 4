@@ -54,3 +54,81 @@
       .box p {
         padding: 0 20px;
         }
+      如果希望变得更生动些那么可以给总体背景也配上合适的图片：
+        .box {
+          width: 424px;
+          background: rul(/img/tile2.gif) repeat-y;
+          }
+        
+        .box h2 {
+          background: url(/img/top2.gif) no-repeat left top;
+          padding-top: 20px;
+          }
+        
+        .box .last {
+          background: url(/img/bottom2.gif) no-reapeat left bottom;
+          padding-bottom: 20px;
+          }
+        
+        .box h2, .box p{
+          padding-left:20px;
+          padding-right: 20px;
+          }
+          
+        <div class="box">
+          <h2>Headline</h2>
+            <p class="last">Content</p>
+        </div>
+        
+        下面介绍灵活的圆角框： 运用到的技术是滑动门技术（sliding doors technique）
+        h2 {
+	        color: #94b767;
+        }
+        .box {
+           width: 424px;
+          background: url(img/tile2.gif) repeat-y;
+          }
+
+        .box h2 {
+          background: url(img/top2.gif) no-repeat left top;
+          padding-top: 20px;
+        }
+
+        .box .last {
+          background: url(img/bottom2.gif) no-repeat left bottom;
+          padding-bottom: 20px;
+        }
+
+        .box h2, .box p {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        p {
+          margin: 0; /* fixes bug in IE */
+        }
+        </head>
+
+        <body>
+          <h1>Fixed Rounded Corner Box Example</h1>
+
+          <div class="box">
+            <h2>Lorem Ipsum</h2>
+              <p class="last">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin venenatis turpis ut quam. In dolor. Nam ultrices nisl sollicitudin sapien. Ut lacinia aliquet ante.<p>
+          </div>
+  4.2.2 山顶角 mountaintop corner
+    这一概念的提出主要是为了满足创建不同颜色的圆角。创建曲线形的位图角蒙板盖住正在使用的背景颜色区。
+    .box {
+      width: 20em;
+      backgrount: #effce7 url(/img/bottom-left.gif) no repeat left bottom;
+      }
+      
+    .box-outer {
+      background: url(/img/bottom-right.gif) no-repeat right bottom;
+      padding-bottom: 5%;
+      }
+    
+    .box-inner {
+      background: url()}
+    
+  
