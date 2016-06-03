@@ -129,6 +129,46 @@
       }
     
     .box-inner {
-      background: url()}
-    
-  
+      background: url(/img/top-left.gif) no-repeat left top;
+      }
+     .box h2 {
+     	background: url(img/top-right.gif) no-repeat right top;
+     	padding-top: 5%;
+     	}
+      
+      .box h2, .box p {
+      	padding-left: 5%;
+      	padding-right: 5%;
+      	}
+   多个背景图像免去了上面那些无语义的标记！通过CSS3可以实现！
+      .box {
+      	backgrount-image: url(/img/top-left.gif),
+      			  url(/img/top-right.gif),
+      			  url(/img/bottom-left.gif),
+      			  url(/img/bottom-right.gif);
+      	background-repeat: no-repeat,
+      			   no-repeat,
+      			   no-repeat,
+      			   no-repeat;
+      	backgrount-position: top left,
+      		     	     top right,
+      		     	     bottom left,
+      		     	     bottom right;
+  	}
+  	
+  	<div class="box">
+  	    <h2>Headline</h2>
+  	    	<p>Content</p>
+  	</div>
+  	
+  	在CSS3中可以添加border-radius来直接由浏览器生成圆角，不需要背景图片！
+  	.box {
+  	    border-radius: 1em;
+  	    }
+	为了适应不同的浏览器可以添加前缀来解决！
+	.box {
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	}
+	
