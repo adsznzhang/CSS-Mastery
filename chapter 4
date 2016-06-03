@@ -234,3 +234,40 @@
 			}
 	3. PNG透明度
 		PNG文件格式最大特点之一是它支持alpha透明度！
+		在IE6中支持PNG透明度的方法是使用专有的AlphaImageLoader过滤器，为此需要在CSS添加以下代码：
+		使用这行代码可能会导致CSS无效，所以最好放在IE6专用的样式表中！
+		.img-wrapper div {
+			filter: progid: DXImageTransform.Mircosoft.AlphaImageLoader(
+			src='/img/shadow2.png', sizingMethod='corp');
+			background:none;
+			}
+		当然也可以使用有条件注释：
+		<!--[if ie 6]>
+		<link rel="stylesheet" type="text/css" href="ie6.css"/>
+		<![endif]-->
+		
+	4. CSS视差效果！
+		要想实现这种效果，需要创建几个不同的背景图像。例如：
+			body {
+				background-image: url(/img/bg-rear.jpg);
+				background-repeat: repeat-x;
+				background-color: #d3ff99;
+				background-position: 20% 0;
+				}
+			.midground {
+				background-image: url(/img/bg-mid.png);
+				background-repeat: repeat-x;
+				background-color: transparent;
+				backgrount-position: 40% 0;
+				}
+			
+			.foreground {
+				background-image: url(/img/bg-front.png);
+				background-repeat: repeat-x;
+				backgound-color: transparent;
+				background-position: 150% 0;
+				}
+				
+	4.5 图像的替换！
+		
+		
