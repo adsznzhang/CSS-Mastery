@@ -140,7 +140,7 @@
       	padding-left: 5%;
       	padding-right: 5%;
       	}
-   多个背景图像免去了上面那些无语义的标记！通过CSS3可以实现！
+   1 多个背景图像免去了上面那些无语义的标记！通过CSS3可以实现！
       .box {
       	backgrount-image: url(/img/top-left.gif),
       			  url(/img/top-right.gif),
@@ -161,14 +161,76 @@
   	    	<p>Content</p>
   	</div>
   	
-  	在CSS3中可以添加border-radius来直接由浏览器生成圆角，不需要背景图片！
+  2	在CSS3中可以添加border-radius来直接由浏览器生成圆角，不需要背景图片！
   	.box {
   	    border-radius: 1em;
   	    }
-	为了适应不同的浏览器可以添加前缀来解决！
-	.box {
-	-moz-border-radius: 1em;
-	-webkit-border-radius: 1em;
-	border-radius: 1em;
-	}
+		为了适应不同的浏览器可以添加前缀来解决！
+		.box {
+		-moz-border-radius: 1em;
+		-webkit-border-radius: 1em;
+		border-radius: 1em;
+		}
 	
+	3 border-image可以指定一个图像作为元素的边框，可以根据简单的百分比规则把图像划分为9个单独的部分，浏览器会自动使用
+		恰当的部分作为边框的对应部分。这种技术成为nine-slice scaling！九分法缩放！
+		
+		
+
+4.3 投影 shadow!
+	简单的CSS投影原理是创建一个投影背景，把图像放在背景上并偏移和背景投影相等的像素！
+	.img-wrapper {
+		backgrount: url(/img/shadow.gif) no-repeat bottom right;
+		clear: right;
+		float: left;
+		position: relative;
+		}
+	
+	.img-wrapper img {
+		background-color: #fff;
+		border: 1px solid #a9a9a9;
+		padding: 4px;
+		display: block;
+		margin: -5px 5px 5px -5px;
+		postion: relative;
+		}
+		
+4.3.2 来自Clagnut的投影方法
+	他不使用负的外边距而是使用相对定位来偏移图像
+		.img-wrapper {
+		backgrount: url(/img/shadow.gif) no-repeat bottom right;
+		float: left；
+		line-height: 0;
+		}
+	
+	.img-wrapper img {
+		background-color: #fff;
+		border: 1px solid #a9a9a9;
+		padding: 4px;
+		left: -5px;
+		top: -5px;
+		postion: relative;
+		}
+		
+		CSS3中使用box-shadow让浏览器本身创建投影！！
+		例如把投影偏移3像素，宽度设置为6像素，颜色为中等灰色！
+			img {
+				box-shadow: 3px 3px 6px #666;
+				}
+				
+4.4 不透明度
+	对于相互重叠的元素，可以用这一属性来显露下面的元素。
+	1.CSS不透明度例如：
+		.alert {
+			background-color: #000;
+			border-radius: 2em;
+			opacity: 0.8;
+			filter: alpha(opacity=80);/*proprietary IE code */
+			}
+	2. RGBa可以同时设置颜色和不透明的机制！a代表alpha透明度
+		.alert {
+			background-color: rgba(0,0,0,0.8); /*最后一个值是不透明度值，这里是80%也就是说20%的透明度 */
+			border-radius: 2em;
+			}
+	3. PNG透明度
+		PNG文件格式最大特点之一是它支持alpha透明度！
