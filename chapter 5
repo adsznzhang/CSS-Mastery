@@ -1,0 +1,105 @@
+5.1 简单的链接样式！
+  链接伪类选择器：link 选择未被访问的，:visited你懂的！还有俩动态伪类选择器:hover和:active前者选择鼠标悬停出的元素，后者寻找被激活的！
+  在定义悬停的时候最好添加:focus伪类，这样通过键盘移动到链接上时样式与悬停效果一样！things like this 
+    a:hover, a:focus {color: red;}
+    /* makes table rows yellow wehn hovered over */
+    tr:hover {
+      background: yellow;
+      }
+    input:focus {
+      background yellow;
+      }
+  链接的下划线属性是text-decoration,a:link, a:visited {text-decoration: none;} 同时a:hover, a:focus, a:active {text-decoration: underline;}
+  注意！！选择器的顺序非常重要！如果把上面俩颠倒位置那么悬停将不起作用了！因为层叠的原因，相同特殊性后定义的优先！
+  
+  5.2 make it more fun with underline....
+    如果你不喜欢下划线！
+      a:link, a:visited {
+        text-decoration: none;
+        font-weight: bold;
+        }
+      a:hover, a:focus, a:active {
+        text-decoration: underline;
+        font-weight: bodl;
+        }
+        
+    5.2.2 奇特的链接下划线！
+      使用图像创建链接下划线:
+        a:link, a:visited {
+          color: #666;
+          text-decoration: none;
+          background: url(/img/underline.gif) repeat-x left bottom
+          }
+  5.3 已访问链接的样式
+    you can try the follwing css
+       a:visited {
+        padding-right: 20px;
+        background: url(/img/check.gif) no-repeat right middle;
+        }
+  
+  5.4 为链接目标设置样式
+    除了链接到特定的文档之外，还可以使用包含片段标识符的链接链接到页面的特定部分，方法是在href的末尾加一个#字符，然后加上要链接元素的ID，例如！
+      <a href="http://example.com/story.htm#comment3">
+        A great comment by Simon
+      </a>
+      但是如果页面内容非常多，很难分清转到了哪个元素，所以CSS3中使用:target伪类为目标元素设置样式。例如：
+        .comment: target {
+          background-color: yellow;
+          }
+        还可以添加渐变动画！
+          .comment:target {
+            background-image: url(img/fade.gif);
+            }
+    
+  5.5 突出显示不同类型的链接!
+    区分链接是指向站点的另一个页面还是另一个站点！较笨的方法是在链接旁边加一个图标来区别例如：
+      .external {
+        background: url(/img/externalLink.gif) no-repeat right top;
+        padding-right: 10px;
+        }
+    上面的方法不怎么灵巧，用属性选择器来解决这个问题比较好！例如：
+      a[href^="http://www.yoursite.com"],
+      a[href^="http://yoursited.com"] {
+        background-image: none;
+        padding-right: 0;
+        }
+    也可以对邮件链接进行突出显示：
+      a[href^="mailto:"] {
+        background: url(img/email.png) no-repeat right top;
+        padding-right: 10px;
+        }
+    突然可下载的文档和提要！使用[att$=val]属性选择器。例如：
+      a[href$=".pdf"] {
+        background: url(img/pdfLink.gif) no-repeat right top;
+        padding-right: 10px;
+        }
+      a[href$=".doc"] {
+        background: url(img/wordLink.gif) no-repeat right top;
+        padding-right: 10px;
+        }
+    许多人在网站上提供了RSS提要，也可以用CSS属性选择器区别：
+      a[href$=".rss"], a[href$=".rdf"] {
+        background: url(img/feedLink.gif) no-repeat right top;
+        padding-right: 10px;
+        }
+        
+  5.6 创建类似按钮的链接
+    锚是行内元素，意味着只有在单击链接的内容时他们才激活！为了扩大可点击的区域，可把锚的display属性设置为block例如：
+      a {
+        display: block;
+        width: 6.6em;
+        line-height: 1.4;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid #66a300;
+        background-color: #8cca12;
+        color: #fff;
+        }
+      注意到上面的CSS宽度是以em为单位，由于其性质，块级元素会扩展，填满可用的宽度。还有就是line-height来控制按钮的高度而不是height。如果设置height
+      就必须用内边距将文本压低，模拟出垂直居中的效果。但是，文本在行框中总是垂直居中的，缺点是按钮的文本占据两行的话，按钮高度也就需要两行，此时
+      就需要你自行调整按钮的文本了！
+      
+  5.6.1 简单的反转
+    
+  
+      
