@@ -100,6 +100,53 @@
       就需要你自行调整按钮的文本了！
       
   5.6.1 简单的反转
+    a:hover, a:focus {
+      backgorund-color: #f7a300;
+      border-color;
+      }
+  5.6.2 图像翻转
+    a:link, a:visited {
+      display: block;
+      width: 203px;
+      height:72px;
+      text-indent: -1000em;
+      background: url(/img/button.png) left top no-repeat;
+      }
+    
+    a:hover, a:focus {
+      background-image: url(/img/btton-over.png);
+      }
+      
+    a:active {
+      background-image: url(/img/button-active.png);
+      }
+    注意上面用了-1000em来隐藏了锚文本！ 也可以创建特大的按钮图像，或者结合使用背景颜色和图像创建流式的或者弹性按钮
+    
+    
+5.6.3 Pixy 样式的翻转
+  多图像的翻转由于要下载可能会产生延时，可以将鼠标悬停的图像作为背景应用于父元素，从而预先下载它们。另一个方法
+  是不切换多个背景图像，而是使用一个图像并切换它的背景位置。使用此方法的好处是减少了服务器的请求数量，而且可以将所有按钮的状态放在一个地方。
+  这个方法称为PIXY！
+    a:link, a:visited {
+      display: block;
+      width: 203px;
+      height: 72px;
+      text-indent: -1000em;
+      backgrount: url(/img/buttons.png) -203px 0 no-repeat;
+      }
+    
+    a:hover, a:focus {
+      background-position: right top;
+      }
+    a:active {
+      background-position: left top;
+      }
+    
+  即使是改变图像的对齐方式，windows上的IE还是会向服务器请求新的图像，会产生轻微的闪烁，解决的办法是将翻转状态应用于链接的父元素。例如
+    p {
+      background: url(/img/buttons.png) no-repeat right top;}
+  
+  5.6.4 CSS精灵！！
     
   
       
