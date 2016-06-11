@@ -147,6 +147,78 @@
       background: url(/img/buttons.png) no-repeat right top;}
   
   5.6.4 CSS精灵！！
-    
+    多个服务器请求会对站点的性能产生显著的影响，所以Pixy方法把所有按钮状态包含在一个图像中，更进一步把所有图标甚至站点导航都包含在一个
+    图像中，这样可以大量减少服务器的调用！这就是精灵的核心！
   
+  5.6.5 用CSS3实现翻转！
+    CSS3包含了text-shadow box-shadow和border-radius等属性，可以创建样式丰富的按钮，而不需要使用任何图像。例如下面的样式：
+      a {
+        display: block;
+        width: 6.6em;
+        height: 1.4em;
+        line-height: 1.4;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid #66a300;
+        background-color:#8cca12;
+        color: #fff;
+        }
+  接下来添加曲线边框和投影。
+    a {
+      display: block;
+      width: 6.6em;
+      height: 1.4em;
+      line-height: 1.4;
+      text-algin: center;
+      text-decoration: none;
+      border: 1px solid #66a300;
+      -moz-border-radius: 6px;
+      -webkit- border-radius: 6px;
+      border-radius: 6px;
+      background-color: #8cca12;
+      color: #fff;
+      text-shadow: 2px 2px 2px #66a300;
+      -moz-box-shadow:  2px 2px 2px #ccc;
+      -webkit-box-shadow: 2px 2px 2px #ccc;
+      box-shadow: 2px 2px 2px #ccc;
+      }
+      
+      为了实现渐变可以使用-webkit-gradient.他的参数包括（直线或放射状， 渐变的方向，初始颜色，结束颜色和中间的过渡点！）例如：
+        a {
+          background-img: -webkit-gradient(linear, left top ,left bottom, from(#abe142), to (#67a400))
+          }
+      还可以添加倒影！例如：
+      a {
+        -webkit-box-reflect: below 2px -webkit-gradient (linear, left top, left bottom, from(transparent), color-stop(0.52,transparent), to(white));
+        }
+  
+  
+  5.7 纯CSS工具提示！
+    当鼠标悬停在具有title属性的元素上时一些浏览器弹出的黄色小文本框。使用CSS定位技术可以创建纯CSS工具提示！例如：
+      <p>
+        <a href="http:/www.andybudd.com/" class="tooltip">
+      Andy Budd<span> (This website rocks) </span></a> is a web developer based in Brignton England.
+      </p>
+      在这个链接中，添加希望显示为链接文本的文本，然后添加包围在span中的工具提示文本！将工具提示包围在圆括号中，这样的话在样式关闭
+      时这个句子仍然有意义的。首先将锚的position属性设置为relative。这样就可以相对父元素的位置对span内容进行绝对定位！！因为不希望工具提示一开始就显示，
+      所以将它的display属性设置为none;
+        a.tooltip {
+          postion: relative;
+          }
+        a.tooltip span{
+          display: none;
+          }
+        当鼠标悬停在这个锚上时，表示希望显示span的内容，方法是将span的display属性设置为block。但是只在鼠标悬停在这个链接上时才这样做。
+        为了让span内容出现在锚的右下方，需要将span的position属性设置为absolute，并且将它定位到距离锚顶部1em,距离左边2em的地位！
+        
+        a.tooltip: hover span{
+          display: block;
+          position: absolute;
+          top: 1em;
+          left 2em;
+          }
+          记住！！！绝对定位元素的定位相对于最近的已定位祖先元素！！（如果没有则相对于根元素）！！！！！！！！！！！！！！
+          
+          
+      
       
