@@ -1,0 +1,86 @@
+对列表应用样式和创建导航条！
+
+6.1 基本列表样式：
+  <ul>
+    <li></li>
+    <li></li>
+  </ul>
+可以使用list-style-image属性添加定制的项目符号！但是这种方法对项目符号图像位置的控制力不强。更常用的是关闭项目符号，并且将定制的项目符号作为额
+背景添加在列表元素上。然后可以用背景图像的定位属性精确的控制自定义项目符号的对准方式！
+首先将列表的外边距和内边距设置为零，去掉缩进。去掉项目符号！
+  ul {
+    margin: 0;
+    padding: 0'
+    list-style-type: none;
+    }
+添加定制的项目符号也非常简单。在列表项左边添加padding,为符号留出所需要的空间，然后将项目符号作为背景图像应用于列表项。如果列表跨越多行，
+你可能希望将项目符号放在接近列表表项顶部的位置！如果列表项内容不会跨很多行，那么可以将垂直位置设置为middle或50%，从而让项目符号垂直剧中！
+  li {
+    background: url(/ima/bullet.gif) no-repeat 0 50%;
+    padding-left: 30px;
+    }
+    
+6.2 创建基本的垂直导航条！
+  <ul class="nav">
+    <li><a href="home.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="services.ht">Our Services</a></li>
+    
+  </ul>
+  去掉默认的项目符号和内外边距：
+    ul.nav {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      }
+  然后处理样式，设置浅绿色背景和深绿色边框，以em为单位设置列表的宽度！：
+    ul.nav {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      width: 8em;
+      background-color: #8BD400;
+      border: 1px solid #486B02;
+      }
+  为了创建与按钮相似的单击区域，需要将锚的display属性设置为block：
+    ul.nav {
+      display: block;
+      color: #2b3f00;
+      text-decoration: none;
+      }
+      
+  为了在菜单上创建斜面效果，需要把顶边框设置得比背景颜色深一些，让底边框深一点。还可以设置一个背景图像作为图标：
+    ul.nav a {
+      display: block;
+      color: 2b3f00;
+      text-decoration: none;
+      border-top: 1px solid #486b02;
+      background :url(/img/arrow.gif) no-repeat 5% 50%;
+      padding: 0.3em 1em;
+      }
+  所有边框叠在另一个链接的顶上，但是最后一个链接的底边框与列表的底边框形成了双线。下面是去掉列表的底边框。某些情况下不可行，那么可以在第一个
+  或最后一个列表项上添加类，这样就可以直接删除边框，也可以用last-child伪类！：
+    ul.nav .last a {
+      border-bottom: 0;
+      }
+  最后还要应用:hove :focus 和:selected！
+    ul.nav a:hover,ul.nav a:focus,ul.nav .selected a {
+      color: #e4ffd3;
+      background-color: #6da203;
+      }
+6.3 在导航条中突出显示当前页面！
+  工作原理是在每个页面的主体元素中添加一个ID或类名，然后在导航列表中的每个项中添加一个对应的ID或类名。然后两者结合就可以突出显示当前部分或者页面：
+    <body id="home">
+      <ul class="nav">
+        <li><a href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+      </ul>
+  #home .nav .home a, #about .nav .about a {
+    background-position: right bottom;
+    color: #fff;
+    cursor: default;
+    }
+    
+6.4 创建简单的水平导航条！
+  
+    
