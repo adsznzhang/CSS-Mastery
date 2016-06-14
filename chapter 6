@@ -101,5 +101,81 @@
       float: left;
       margin-right: 0.6em;
       }
+    /*灰色边框，悬停时蓝色背景，链接文本白色*/
+    ol.pagination a ,ol.pagination li.selected {
+      display: block;
+      padding: 0.2em 0.5em;
+      border: 1px solid #ccc;
+      text-decoration: none;
+      }
+      ol.pagination a:hover, ol.pagination a: focus, ol.pagination li.selected {
+        background-color: blue;
+        color: white;
+      }
+    /*去掉pre和next的边框*/
+    ol.pagination a[rel="prev"],ol.pagination a [rel="next"] {
+      border: none;
+      }
+    /*在列表的头尾添加箭头*/
+    ol.pagination a[rel="prev"]:before {
+      content: "\00AB";
+      padding-right: 0.5em;
+      }
+    ol.pagination a[rel="next"]:after {
+      content:"\00BB";
+      padding-left: 0.5em;
+      }
+      
+6.5 创建图形化导航条：
+    /*创建无序列表*/
+    <ul class="nav">
+      <li><a href="home.htm">Home</a></li>
+      <li><a href="about.htm">About</a></li>
+      <li><a href="news.htm">News</a></li>
+      <li><a href="products.htm"></a></li>
+      <li><a href="services.htm">Services</a></li>
+      <li><a href="clients.htm">CLients</a></li>
+      <li><a href="case-studies.htm">Case Studyies</a></li>
+    </ul>
+  /*去掉默认的项目符号*/
+    ul.nav {
+      margin:0;
+      padding:0;
+      list-style: none;
+      width: 72em;
+      background: #FAA819 url(img/mainNavBg.gif) repear-x;
+      }
+    /*水平显示*/
+    ul.nav li {
+      float: left;
+      }
+    /*清除浮动*/
+    ul.nav {
+      overflow: hidden;
+      }
+    /*链接变成按钮样式，宽度随文本*/
+    ul.nav a {
+      display: block;
+      padding: 0 3em;
+      line-height: 2.1em;
+      text-decoration: none;
+      color: #fff;
+      }
+    /*每个链接间通过背景图像创建分割线*/
+    ul.nav a {
+      background: url(img/divider.gif) repeat-y left top;
+      }
+    /*第一个链接去掉分隔线*/
+      ul.nav .first a {
+        background-image: none;
+        }
+    /*也可以用.first-child伪类*/
+    ul.nav li:first-child a {
+      background: none;
+      }
+6.6简化的“滑动门”标签式导航
+  
+    
+      
       
     
