@@ -174,8 +174,45 @@
       background: none;
       }
 6.6简化的“滑动门”标签式导航
-  
+  之前学习的“滑动门”技术也可以用来创建灵活的可扩展的标签页式导航！方法时用一个大图像和一个侧边图像创建标签页！：
+    <ul class="nav">
+      <li><a href="home.htm">Home</a></li>
+      <li><a href="about.htm">About</a></li>
+      <li><a href="news.htm">News</a></li>
+      <li><a href="products.htm"></a></li>
+      <li><a href="services.htm">Services</a></li>
+      <li><a href="clients.htm">CLients</a></li>
+      <li><a href="case-studies.htm">Case Studyies</a></li>
+    </ul>
     
+    ul.nav {
+      margin:0;
+      padding:0;
+      list-style:none;
+      width: 72em;
+      overflow: hidden;
+      }
+    ul.nav li {
+      float: left;
+      background: url(img/tab-right.gif) no-repeat right top;
+      }
+    /*为了完成标签页效果，将标签页的左边图像作为背景应用于锚并且左对齐*/
+    ul.nav li a {
+      display: block;
+      padding: 0 2em;
+      line-height: 2.5em;
+      background:url(img/tab-left.gif) no-repeat left top;
+      text-decoration:none;
+      color:#fff;
+      float:left;
+      }
+    /*创建翻转效果，只需改变链接的颜色*/
+    ul.nav a :hover, ul.nav a:focus { 
+      color: #333;
+    }
       
       
+6.7 Suckerfish 下拉菜单！
+  原理时把子导航嵌套在无序列表中，把列表定位到屏幕之外，然后当鼠标悬停在父列表时重新定位它。
+  
     
