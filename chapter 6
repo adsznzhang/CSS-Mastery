@@ -215,4 +215,73 @@
 6.7 Suckerfish 下拉菜单！
   原理时把子导航嵌套在无序列表中，把列表定位到屏幕之外，然后当鼠标悬停在父列表时重新定位它。
   
+  <ul class="nav">
+    <li><a href="/home/">Home</a></li>
+    <li><a href="/products/">Products</a>
+      <ul>
+        <li><a href="/products/silverback/">Silverback</a></li>
+        <li><a href="/products/fontdeck/">Font Deck</a></li>
+      </ul>
+    </li>
+  <li><a href="/services/"><Services</a>
+    <ul>
+      <li><a href="/services/design/">Design</a></li>
+      <li><a href="/services/development/">Development</a></li>
+      <li><a href="/services/consultancy/">Consultancy</a></li
+    </ul>
+  </li>
+  <li><a href="/contact/"<Contact Us</a></li>
+  </ul>
+  ul.nav, ul.nav ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    float:left;
+    border: 1px solid #486B02;
+    background-color:#8BD400;
+    }
+    
+  ul.nav li {
+    float:left;
+    width:8em;
+    background-color:#8BD400;
+    }
+  为了变水平列表项需要向左浮动。如果要给导航列表设置边框和背景颜色，因为包含的列表项都是浮动的，它们不占据空间，这会导致列表收缩。为了
+  解决这个问题，列表也要浮动！
+  
+  为了在激活之前隐藏实际的下拉菜单，需要把它们的position设置为absolute然后把它们隐藏到屏幕左边之外。
+  ul.nav li ul {
+    width:8em;
+    position:absolute;
+    left:-999em;
+    }
+  
+  最后几个样式把导航链接设置为块级元素，然后修改列表的外观，设置背景颜色和斜面边框。
+    ul.nav a {
+      display: block;
+      color:#2B3FOO;
+      text-decoration: none;
+      padding: 0.3em 1em;
+      border-right: 1px solid #486B02;
+      border-left: 1px solid #E4FFD3;
+      }
+    ul.nav li li a {
+      border-top:1px solid #E4FFD3;
+      border-bottom:1px solid #486B02;
+      border-left: 0;
+      border-right:0;
+      }
+    /*remove unwanted borders on the end list items*/
+    ul.nav li:last-child a {
+      border-right: 0;
+      border-bottom: 0 ;
+      }
+    ul a:hover, ula:focus{
+      color: #E4FFD3;
+      background-color: #6DA203;
+      }
+  
+  
+  6.8 CSS图像影射
+  
     
