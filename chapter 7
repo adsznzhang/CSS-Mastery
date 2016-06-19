@@ -1,2 +1,102 @@
 
 表格
+7.1.1 表格特有的元素
+  summary 和 caption，它基本上用作表格的标题。尽管不是必须有的元素。另一个是summary 可以应用于表格标签，用来描述表格的内容
+  与图像的alt文本类似。
+  <table class="cal" summary="A calendar style date picker">
+    <caption>
+      <a href="cal.php?month=dec08" rel="pref">&lt;</a>January 2008
+      <a href="cal.php?month=feb09" rel="next">&gt;</a>
+    </caption>
+  </table>
+  
+  2 thead, tbody和tfoot 利用它们可以把表格划分为逻辑部分！行标题和列标题应该使用th而不是td标记。
+  <thead>
+    <tr>
+      <th scope="col">Sun</th>
+      <th scope="col">MOn</th>
+    </tr>
+  </thead>
+  这里设置scope的直为row或col来定义它们是行标题还是列标题。
+  
+  3col和colgroup. colgroup能够使用col元素对一个或多个列定义和分组。
+  <colgroup>
+    <col id="sun" />
+    <col id="mon" />
+  </colgroup>
+  
+7.12 数据表格标记
+<table class="cal" summary="A calendar style date picker">
+  <caption>
+    <a href="#" rel="prev">&lt;</a> January 2008 <a href="#" rel="next">&gt;</a>
+  </caption>
+    <colgroup>
+      <col id="sun" />
+      <col id="mon" />
+      <col id="tue" />
+      <col id="wed" />
+      <col id="thur" />
+      <col id="fri" />
+      <col id="sat" />
+    </colgroup>
+  <thead>
+    <tr>
+      <th scope="col">Sun</th>
+      <th scope="col">Mon</th>
+      <th scope="col">Tue</th>
+      <th scope="col">Wed</th>
+      <th scope="col">Tur</th>
+      <th scope="col">Fri</th>
+      <th scope="col">Sat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="null">30</td>
+      <td class="null">32</td>
+      <td><a href="#">1</a></td>
+      <td><a href="#">2</a></td>
+      <td><a href="#">3</a></td>
+      <td><a href="#">4</a></td>
+      <td><a href="#">5</a></td>
+    </tr>
+    <tr>
+      <td><a href="#">6</a></td>
+      <td><a href="#">7</a></td>
+      <td class="selected"><a href="#">8</a></td>
+      <td><a href="#">9</a></td>
+      <td><a href="#">10</a></td>
+      <td><a href="#">11</a></td>
+      <td><a href="#">12</a></td>
+    </tr>
+    ...
+  </tbody>  
+  </table>
+  
+7.1.3 对表格应用样式
+  CSS规范有两个表格边盒模型：单独的和叠加的。在单独模型中，在各个单元格周围有边框，
+  而在叠加的模型中，单元格共享边框。大多数浏览器采用单独模型。首先要做的是将表格的
+  border-collapse属性设置为collapse.双边框创建斜面的效果则：border-collapse:separate
+  table.cal {
+    border-collapse:seperate;
+    border-spacing: 0;
+    text-align: center;
+    color: #333;
+    }
+  .cal th, .cal td {
+    margin: 0;
+    padding: 0;
+    }
+  CSS的border-spacing 属性可以控制单元格的距离，IE7和更低版本不理解这个属性！
+  因此需要用老式cellspacing属性！
+  <table cellspacing="0" calss="cal" summary="sdfs">
+
+7.1.4 添加视觉样式！
+  增加字号采用粗体，应用垂直内边距增加标题上下的空间。
+  .cal caption {
+    font-size: 1.25em;
+    padding-top: 0.692em;
+    
+    }
+  
+      
