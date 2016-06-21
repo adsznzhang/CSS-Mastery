@@ -96,7 +96,119 @@
   .cal caption {
     font-size: 1.25em;
     padding-top: 0.692em;
+    padding-bottom: 0.692em;
+    background-color: #d4dde6;
+    }
+    /*为了确定当前月份两边的前一个和下一个链接的位置，给他们设置水平外边距，然后让它们分别向左边和右边浮动。然后，通过应用内边距
+    让它们的点击区域更突出。为了给这些链接设置样式，使用属性选择器来选择rel属性！*/
+  .cal caption [rel="prev"] {
+    float: left;
+    margin-left: 0.2em;
+    }
     
+  .cal caption [rel="next"] {
+    float: right;
+    margin-right: 0.2em;
+    }
+  .cal caption a:link, .cal caption a:visited {
+    text-decoration: none;
+    color: #333;
+    padding: 0 0.2em;
+    }
+  .cal caption a:hover, .cal caption a:active, .cal caption a:focus {
+    background-color: #6d8ab7;
+    }
+  /*为了区分第一行，将背景设置比表格其他部分浅，并且下划线。*/
+  .cal thead th {
+    background-color: #d4dde6;
+    border-bottom: 1px solid #a9bacb;
+    font-size: 0.875;
+    }
+  /*让表格中的文本是灰色的，并设置阴影*/
+  .cal tbody {
+    color: #a4a4a4;
+    text-shadow: 1px 1px 1px white;
+    background-color: #d0d9e2;
+    }
+  /*让单元格产生斜面的效果，需要在各个边上设置不同的颜色；顶部和左边颜色浅，底部和右边颜色深。然后需要设置锚链接的样式。*/
+  /*设置为block并应用内边距，创建像按钮一样的点击区域。*/
+  .cal tbody td {
+    border-top: 1px solid #e0e0e1;
+    border-right: 1px solid #9f9fa1;
+    border-bottom: 1px solid #acacad;
+    border-left: 1px solid #dfdfe0;
+    }
+    .cal tbody a {
+      display:block;
+      text-decoration: none;
+      color:#333;
+      background-color: #c0c8d2;
+      font-weight: bold;
+      padding: 0.385em 0.692em 0.308em 0.692em;
+      }
+    
+    /*设置锚链接的悬停状态。前面选择的日期通过包含selected类继承这个样式。*/
+    .cal tbody a:hover,
+    .cal tbody a:focus,
+    .cal tbody a:active,
+    .cal tbody .selected a:link,
+    .cal tbody .selected a:visited,
+    .cal tbody .selected a:hover,
+    .cal tbody .selected a:focus,
+    .cal tbody .selected a:active {
+      background-color: #6d8ab7;
+      color: white;
+      text-shadow: 1px 1px 2px #22456b;
+      /*如果希望显示日期被按下的外观，那么修改单元格的边框颜色，让顶和左边框比较深，底和右边框比较浅*/
+      }
+  7.2 简单的表单布局
+  7.2.1 有用的表单元素
+  fieldset元素用来对相关信息块进行分组！
+  为了识别每个fieldset的用途，可以使用legend元素。legend就像是fieldset的标题！
+  label元素极其重要，因为它可以帮助添加结构和增加表单的可用性和可访问性。将标签和表单控件关联起来非常容易！一种是隐式方式 ：
+  <label> email <input name="email" type="text"/><label>
+  另一种是显示方式：
+  <label for="email">email<label>
+  <input name="email" id="email" type="text" />
+  /*在表单输入控件和标签之间创建关联需要ID属性，而将表单数据发送回服务器需要NAME属性*/
+  
+7.2.2基本布局
+使用3个结构性元素对第一个fieldset内容加标记！
+<fieldset>
+  <legend>Your Contact Details</legend>
+  <div>
+    <label for="author">Name: </label>
+    <input name="author" id="author" type="text" />
+  </div>
+  <div>
+    <label for="email"> Email Address:</label>
+    <input name="email" id="email" type="text" />
+  </div>
+  <div>
+    <label for="url">Web Address:</label>
+    <input name="url" id="url" type="text" />
+  </div>
+  </fieldset>
+  /*fieldset必须使用外边距进行垂直分隔，可以使用内边距在周围增加一些空间。让legend显示为粗体*/
+  fieldset {
+    margin :1em 0;
+    padding 1em;
+    border: 1px solid #ccc;
+    background:#f8f8f8;
+    }
+  legend {
+    font-weight: bold;
     }
   
+  /*标签在默认情况下是行内元素。将它们的display属性设置为block会是它们产生自己的块框，迫使输入元素转到下一行。在不同浏览器中，文本输入
+  框的宽度不一样，为了一致，应该显式的设置文本输入框的宽度。下面用em创建可伸缩的表单布局！
+  
+  label {
+    display: block;
+    cursor: pointer;
+    }
+  input {
+    width: 20em;
+    }
+7.2.3其他元素
       
