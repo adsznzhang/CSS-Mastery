@@ -212,3 +212,71 @@
     }
 7.2.3其他元素
       
+上面的布局同样适用于其他表单元素，比如文本区域：
+  <fieldset>
+    <legend>Comments</legend>
+      <div>
+        <label for="text">Message: </label>
+        <textarea name="text" id="text">
+        </textarea>
+      </div>
+  </fieldset>
+文本区域的尺寸在不同浏览器上不一样，所以显示的设置它们的宽度和高度。下面把宽度设置成100%，意味着由父元素决定。
+  textarea {
+    width: 100%;
+    height: 20em;
+    }
+前面的示例中，通过在输入元素上应用宽度，定义了文本框的宽度。但是输入元素包括其他表单控件（
+如复选框，单选按钮和提交按钮）和比较常用的文本输入框。用属性选择器来寻找特性类型的表单元素。
+  input[type="text"] {
+    width: 20em;
+    }
+
+7.2.4 修饰
+  元素获得焦点改变背景颜色：
+  input[type="text"]:focus, textarea:focus {
+    background:#ffc;
+  }
+  在FIREFOX浏览器中文本输入框和文本区域的底边和右边框是白色的不好区分，所以用下面的样式来区分：
+  input[type="text"], textarea {
+    border-top: 2px solid #999;
+    border-left: 2px solid #999;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+  
+必填区域：
+  <div>
+  <label for="author">Name:<em class="required">(required)</em></label>
+  <input name="author" id="author" type="text" />
+  </div>
+  也可以应用样式来区分：
+  .required {
+    font-size: 0.75em;
+    color:#760000;
+  }
+  
+
+7.3 复杂的表单布局
+对于比较长的复杂的表单，垂直间距会造成问题，表单不容易查看。所以有必要将标签和表单元素水平布置。
+代码和前面的布局一样，唯一差异是，不将标签设置为块级元素，而是将标签向左浮动。我们还需要
+给标签设置宽度，让所有表单元素排齐：
+ label {
+  float: left;
+  width: 10em;
+  cursor:pointer;
+}
+如果表单标签可能跨多行，还应该清理容器div.
+  form div {
+    clear:left;
+  }
+  
+7.3.1 可访问的数据输入元素
+有时候我们不希望为每个元素都显示标签。即使不希望显示标签，让标签出现在源代码中供屏幕阅读器使用仍然很重要。
+  <div>
+    <label for="dateOfBirth">Date of Birth:</label>
+      <input name="dateOfBirth" id="dateOfBirth" type="text" />
+    <label id="monthOfBirthLabel" for="monthOfBrith">Month of Brith:</label>
+    <select name="monthOfBrith"
+  
+
