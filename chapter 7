@@ -277,6 +277,86 @@
     <label for="dateOfBirth">Date of Birth:</label>
       <input name="dateOfBirth" id="dateOfBirth" type="text" />
     <label id="monthOfBirthLabel" for="monthOfBrith">Month of Brith:</label>
-    <select name="monthOfBrith"
+    <select name="monthOfBrith" id="monthOfBrith">
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+    </select>
+  <label id="yearOfBirthLabel" for="yearOfBirth">Year of Birth:</label>
+    <input name="yearOfBirth" id="yearOfBirth" type="text" />
+  </div>
+  /*为了创建这个布局，首先要隐藏“month of birth”和"year of birth"。将标签的display属性设置为none会阻止标签显示！
+  但也会阻止许多屏幕阅读器。所以不这样做！而是通过直较大的负文本缩进将标签定位到屏幕之外！
+  在前面创建的基本表单样式中，标签以已经设置了宽度，为了防止标签影响布局，还需要将这些标签的宽度设置为零！
   
+  #monthOfBirthLabel, #yearOfBirthLabel {
+    text-indent: -1000em;
+    width: 0;
+  }
+  select#monthOfBirth {
+    width: 10em;
+    margin-right: 0.5em;
+  }
+  input#yearOfBirth {
+    width: 5em;
+  }
+  
+  
+7.3.2 多列复选框
+为了创建列的效果，要将复选框分成两组，每一组放在一个div红各有一个col类。然后将这两个div
+元素一起放在一个具有描述性ID的fieldset中：
+
+<fieldset id="favoriteColor">
+  <h2>Favorite Color:</h2>
+    <div class="col">
+      <div>
+      <label><input class="checkbox" id="red" name="red" type="checkbox" value="red"/>red</label>
+      ...
+      </div>
+    </div>
+    
+    <div class="col">
+      <div>
+      <label><input class="checkbox" id="orange" name="orange" type="checkbox" value="orange"/>orange</label>
+      </div>
+      </div>
+</fieldset>
+因为已经创建了基本的fieldset样式，所以首先需要覆盖这些样式，将内边距和外边距设置为零，去掉边框并且将
+背景颜色设置为透明。
+
+fieldset#favoriteColor {
+  margin:0;
+  padding:0;
+  border:none;
+  background: transparent;
+}
+标题将用作标签，所以它需要像其他标签一样向左浮动并且将宽度设置为10em.
+
+#favoriteColor h2 {
+  width: 10em;
+  float: left;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+然后给div设置宽度并且让它们向左浮动，从而创建出两列的布局，因为表单中所有div在默认情况下已经被清理了
+所以需要使用clear:none来覆盖那个声明。
+#favoriteColor .col{
+  width: 8em;
+  float: left;
+  clear: none;
+}
+这表单中的所有标签向左浮动并且将宽度设置为10em。但是，复选框的标签不需要浮动，所以在这零应该覆盖那个声明：
+
+#favoriteColor label {
+  float:none;
+  }
+  
+  
+  
+提交按钮！！！！
+
+
+
+
 
