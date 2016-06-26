@@ -53,3 +53,179 @@
   margin: 0 auto;
 }
 /*也可以把宽度设置为主体的百分比，或者使用em相对于文本字号设置宽度*/
+混杂模式中IE5和6不知从margin: auto。幸运的是IE将text-align: center误解为让所有东西居中。可以县让主体标签中所有东西居中，然后
+让容器的内容重新定向为左对齐：
+
+body {
+  text-align: center;
+  }
+.wrapper {
+  width: 920px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+8.3基于浮动的布局：
+CSS进行布局有几种不同方式，包括绝对定位和使用负的外边距直，浮动是设置希望定位的元素的宽度，然后将它们向左或者向右浮动。
+
+8.3.1 两列的浮动布局
+要在内容区域创建一个基本的HTML结构：
+<div class="content">
+<div class="primary">
+ <!-- main content goes here-->
+</div>
+<div class="secondary">
+<!-- navigation and secondary content goes here -->
+</div>
+
+</div>
+这个设计的次要内容将位于页面的左边，主内容位于右边。但是，为了提高易用性和访问性，我选择在源代码中将主内容区域放在次要内容区域的前面。
+
+在创建基于浮动的布局时，一般将两列都向左浮动，然后使用外边距或内边距在两列之间创建一个隔离带。在使用这种方法时，列在可用空间内包的很紧，没有
+喘息的空间。 为了防止这情况，需要避免浮动布局在包含它们的元素中太挤。可以不使用水平外边距或内边距建立隔离带，而是让一个元素向左浮动，
+让另一个元素向右浮动，从而创建视觉上的隔离。如果一个元素的尺寸意外的增加了几个像素，那么它不会立刻占满水平空间并下降，而只是
+扩展到视觉隔离带中，
+
+下面的样式添加了display:inline来防止IE中的双外边距浮动产生的BUG：
+.content .primary {
+  width: 650px;
+  padding-right: 20px;
+  float: right;
+  display: inline;
+}
+
+.content .secondary {
+  width: 230px;
+  float: left;
+  display: inline;
+}
+
+8.3.2三列的浮动布局
+三列和两列非常相似，唯一的差异时在内容div中添加了两个新的div：一个用于主内容一个次内容。
+<div class="content">
+  
+  <div class="primary">
+    <div class="primary">
+      <!-- your primary primary content goes there  -->
+    </div>
+    <div class="secondary">
+      <!-- your secondary primary content goes here -->
+    </div>
+  </div>
+  <div class="secondary">
+    <!-- naviagtion and secondary content goes here -->
+  </div >
+  
+</div>
+将次要内容向左浮动，将主内容向右浮动。然后，在主内容div中，将主div向左浮动,次要div向右浮动。
+
+.content .primary .primary {
+  width: 400px;
+  float: left;
+  displya: inline;
+  }
+.content .primary .secondary {
+  width: 230px;
+  float: right;
+  display: inline;
+  }
+第一个示例中主div中添加的右内边距现在要应用在第二个示例的主div上。因此，需要从一般样式中删除内边距，把它应用于更特定的样式：
+
+.content .primary {
+  width: 670px;
+  float: right;
+  display;
+}
+.content .secondary {
+  width: 230px;
+  float: left;
+  display: inline;
+}
+.content .primary .primary {
+  width: 400px;
+  float: left;
+  display: inline;
+}
+.content .primary .secondary {
+  width: 230px;
+  float: right;
+  padding-right: 20px;
+  display: inline;
+}
+
+
+8.4 固定宽度， 流式和弹性布局
+固定布局宽度都以像素为单位！
+优点：对元素大小进行精确控制，知道东西在什么地方。
+缺点：无论窗口尺寸多大，它们的尺寸总是不变。随着屏幕尺寸越来越大，固定宽度设计越来越不适应灵活的WEB！
+      另一个问题时关于行长和文本易读性的问题。固定宽度布局往往适合浏览器默认的文本字号，但是只要增加字号，边栏就会
+      挤满空间而且行长太短，阅读不方便！
+      
+      
+解决的方法就是流式布局和弹性布局来替代固定宽度的布局。
+
+8.4.1 流式布局
+尺寸时百分数而不是像素。相对于浏览器窗口进行伸缩。缺点是当窗口宽度较小的时候，行变得非常窄，很难阅读。在多列的布局中更为明显！
+因此有必要添加以像素或em为单位的min-width，从而防止布局变得太窄！
+
+与之相反，如果设计横跨浏览器整个窗口，那么行就变得太常，也很难阅读！以下措施可以避免这种情况：首先不要横跨浏览器而是让
+容器只跨越宽度的一部分，比如85%。还可以考虑用百分数设置内边距和外边距。这样，内外边距宽度将随着窗口尺寸而变，可以防止列
+太快的变得过宽。最后，对于非常严重的情况，也可以选择为容器设置最大宽度！可以使用liquid fold来计算比例！ 例如设计者使用的
+宽度为960像素，而大多数用户的浏览器窗口设置为1250像素，那么使用的百分数就是960/1250=76.8%
+
+在前面的示例中主内容的宽度是670像素，因为总宽度是920像素，计算结果为72.82%。相似方法计算出次内容为25%，隔离带为2.18%：
+
+.wrapper {
+  width: 76.8%;
+  marigin: 0 auto;
+  text-align: center;
+}
+.content .primary {
+  width: 72.8%;
+  float: right;
+  display: inline;
+}
+.content .secondary {
+  width: 25%;
+  float: left;
+  display: inline;
+}
+
+然后需要设置主内容区域中列的宽度。这需要一些技巧，因为内容div的宽度依据的是主内容元素的宽度，而不是容器。主div的宽度是400，
+即父元素的59.7%,类似方法计算出次要div的宽度是34.33%和间隔带为2.63%：
+
+.content .primary .primary {
+  width: 59.7%;
+  float:left;
+  display:inline;
+}
+.content .primary .secondary {
+  width: 34.33%;
+  float: right;
+  display: inline;
+  padding-right: 2.63%
+}
+
+因为这个布局会恰当的伸缩，所以不需要添加max-width属性。但是，为确保文本行的长度是适合阅读，最好添加以em为单位的
+max-width。对于较小的窗口添加以em为单位的min-width属性：
+
+.wrapper {
+  width: 76.8%;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 125em;
+  min-width: 62em;
+}
+
+一个简单漂亮的流式布局完成了！！！！
+
+8.4.2 弹性布局
+
+弹性布局相对于字号来设置元素的宽度。以em为单位设置宽度，可以确保在字号增加时整个布局随之扩大。这可以将行保持在可以
+阅读的范围！
+
+缺点是和固定宽度一样不能充分利用空间。另外字号增大时整个布局会加大，所以弹性布局会变得比浏览器宽，导致水平滚动条出现
+为了防止这种情况，可能需要在容器div上添加100%的max-width。
+
+将固定宽度布局变成弹性布局是相对简单的任务。技巧是设置基本的字号，让1em大约等于10px.
+大多数浏览器上的默认字号是16px,10px大约是16px的62.5%，所以在主体上将字号设置为62.5%就可以了！
