@@ -229,3 +229,54 @@ max-width。对于较小的窗口添加以em为单位的min-width属性：
 
 将固定宽度布局变成弹性布局是相对简单的任务。技巧是设置基本的字号，让1em大约等于10px.
 大多数浏览器上的默认字号是16px,10px大约是16px的62.5%，所以在主体上将字号设置为62.5%就可以了！
+body {
+  font-size: 62.5%;
+  text-align: center;
+}
+
+这里我们只是将容器宽度用em为单位来设置，内部宽度仍然用百分比，这样就可以方便的修改总尺寸，不必修改每个元素了！：
+
+.wrapper {
+  width: 92em;
+  max-width: 95%;
+  margin 0 auto;
+  text-align: center;
+}
+
+.content .primary {
+  width: 72.82%;
+  float: right;
+  display : inline;
+}
+
+.content .secondary {
+  width: 25%;
+  float: left;
+  display: inline;
+}
+
+.content .primary .primary {
+  width: 59.7%;
+  float: left;
+  display: inline;
+}
+.content .primary .secondary {
+  width: 34.33%;
+  padding-right: 2em;
+  float: right;
+  display: inline;
+}
+
+由于页面缩放在现代浏览器中越来越流行，弹性布局不再那么吃香了！
+
+
+8.4.3 流式和弹性图像
+
+
+
+
+
+
+
+
+
