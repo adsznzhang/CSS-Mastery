@@ -326,6 +326,128 @@ faux列的右边缘与图像的左边相距25%。次要内容区域的右边缘�
   background: #fff url(/img/secondary-faux-column.gif) repeat-y 25% 0;
 }
 
+8.6 高度相等的列
+
+用表格很容易实现，下面用纯CSS来实现：
+
+先看标记：
+<div class="wrapper">
+  <div class="box">
+    <h1>Andy Budd</h1>
+      <p></dp>
+    <div class="bottom"></div>
+  </div>
+  
+   <div class="box">
+    <h1>Andy Budd</h1>
+      <p></dp>
+    <div class="bottom"></div>
+  </div>
+  
+   <div class="box">
+    <h1>Andy Budd</h1>
+      <p></dp>
+    <div class="bottom"></div>
+  </div>
+</div>
+这个示例中需要3个div，每个列一个。在每个div中，需要标题 内容和一个空的div，这个div作为底角的钩子。然后，把这3个div 放在容器
+div中，我们将使用容器div限制高度。
+设置样式：
+
+.wrapper {
+  width:100%;
+  }
+.box {
+  width: 250px;
+  margi-left: 20px;
+  float: left;
+  display: inline;
+  padding: 20px;
+  background: #89ac10 url(/img/top.gif) no-repeat left top;
+}
+
+上面的样式会形成3个高度不一致的列！
+
+等高列技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列移除容器元素。如果把容器
+overflow属性设置为hidden，列就在最高点被剪切。在下面的示例中，给每个元素设置520像素的底内边距和500像素的底外边距。20像素的差值在每个框的底部
+形成可见的内边距。
+
+.wrapper {
+  width:100%;
+  overflow: hidden;
+}
+
+.box {
+  width: 250px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 520px;
+  margin-bottom: 500px;
+  margin-left: 20px;
+  float: left;
+  displya: inline;
+  background: url(/img/top.gif) #89ac10 top left no-repeat;
+}
+
+为了把列的底边定位在正确的位置，需要让他们与容器元素的底部对齐。为此需要把容器的position设置为relative。然后把控div的position设置
+为absolute，把它们的bottom属性设置为零！
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.box {
+  width: 250px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 520px;
+  margin-bottom: 500px;
+  margin-left: 20px;
+  float: left;
+  display: inline;
+  padding: 20px;
+  background : url(/img/top.gif) #89ac10 top left no-repeat;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 290px;
+  backgroun: url(/img/bottom.gif) #89ac10 bottom left no-repeat;
+}
+
+8.7 CSS 3 列！！
+
+使用CSS3也可以创建等高文本列，要通过column-count column-width 和column-gap实现！！
+
+标记如下：
+<h1> Sorates</h1>
+<div class="col">
+  <p>After philosophizing for a while...</p>
+</div>
+应用以下规则，每个列的宽度为14em，列之间2em间距。CSS列的优点之一是可用空间小于已定义列的宽度时的处理方式。列不会像使用浮动那样回绕，而是会
+减少列数。因此如果空间不够显示三列，就会减少到两列！：
+
+.col {
+  -moz-column-count: 3;
+  -moz-column-width: 14em;
+  -moz-column-gap:2em;
+  -moz-column-rule: 1px solid #ccc;
+  -webkit-column-count: 3;
+  -webkit-column-width: 14em;
+  -webkit-column-gap: 2em;
+  -webkit-column-rule: 1px solid #ccc;
+  column-cont: 3;
+  column-width: 14em;
+  column-gap: 2em;
+  column-rule: 1px solid #ccc;
+}
+
+8.8 CSS框架与CSS系统
 
 
 
