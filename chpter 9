@@ -1,2 +1,85 @@
 BUG修复BUG！！
 
+1. 特殊性和分类次序的问题
+将内容区域所有段落的背景设置为白色。但是，希望intro段落是橙色的！：
+  .content p {
+    background-color: white;
+  }
+  .intro {
+    background-color: orange;
+  }
+  在浏览器中运行，段落的背景全为白色，为了达到目的需要intro段落的选择器更特殊：
+  .content p {
+    background-color: whtie;
+  }
+  .content.intro {
+    background-color: orange;
+  }
+  
+  2. 外边距叠加问题
+  以div元素内嵌套的一个段落为例子：
+    <div id="box">
+      <p>This paragraph has a 20px margin.</p>
+    </div>
+  #box {
+    margin: 10px;
+    background-color #d5d5d5;
+  }
+  p {
+    margin: 20px;
+    background-color: #6699FF;
+  }
+  你可能认为在段落和div之间有20像素的外边距，在div外边围绕着10像素的外边距。实际上发生了两个情况。首先，段落的20像素顶外边距和底外边距与
+  div的10像素外边距叠加，形成一个20像素的垂直外边距。其次，这些外边距不是被div包围，而是突出到div的顶部和底部的外边。出现这种情况是
+  由于具有块级子元素的元素计算其高度的方式造成的！！！
+  
+  简单的解决方案是： 通过添加一个垂直边框或内边距，外边距就不再叠加了，而且元素的高度就是它包含的子元素的顶部和底部外边距边缘之间的距离！！
+  
+#box {
+  margin: 10px;
+  padding: 1px;
+  background-color: #d5d5d5;
+}
+
+p {
+  margin 20px;
+  background-color: #6699ff;
+}
+
+
+
+9.2 捕捉BUG的基本知识！！！
+firefox 工具条可以显示地显示标准模式还是混杂模式！ 
+推荐使用firefox 或者safari ....
+
+
+9.2.1 尽量一开始避免BUG
+9.2.2 隔离问题！
+
+一旦确信出现了BUG，就需要尽力隔离问题。隔离问题的一种方法是在相关的元素上应用边框或者轮廓！：
+.promol {
+  float: left;
+  margin-left: 5px;
+  border: 1px solid red;
+}
+
+.promo2 {
+  float: left;
+  border: 1px solid green;
+}
+然后尝试修改几个属性，看看他们是否影响BUG，如果有影响，是怎么影响的，尝试使BUG的效果扩大化可能是有帮助的。例如，如果两个框之间的间隙在ID
+中比你预期的要大，那么加大外边距，看看会发生什么，如果框之间的间隙在IE中加倍了，那么可能是遇到了IE的双外边距浮动BUG。
+
+.promol {
+  float: left;
+  margin-left: 40px;
+  border: 1px solid red;
+}
+.promo2 {
+  float: left;
+  border: 1px solid green;
+}
+尝试一些常见的解决方案，例如将position属性设置为relative, 将display属性设置为inline 或者设置宽度等尺寸，就可以修复许多IE BUG。
+
+
+  
